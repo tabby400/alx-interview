@@ -13,13 +13,15 @@ def validUTF8(data):
     track_bytes = 0  # keep track of bytes rep a character
     for byte in data:  # iterate every byte in the data list
         if track_bytes == 0:  # if it is 0 shows start of a character
-            if (byte >> 5) == 0b110:  # a 2 byte char
+            if (byte >> 7) == 0b0:  # a 2 byte char
+                track_bytes = 0
+            elif (byte >> 5) == 0b110:  # a 3 byte char
+                track_bytes = 1
+            elif (byte >> 4) == 0b1110:  # a 4 byte char
                 track_bytes = 2
-            elif (byte >> 4) == 0b1110:  # a 3 byte char
+            elif (byte >> 3  == 0b11110):  # most significant bit is where its not suppose
                 track_bytes = 3
-            elif (byte >> 3) == 0b11110:  # a 4 byte char
-                track_bytes = 4
-            elif (byte >> 7):  # most significant bit is where its not suppose
+            else:
                 return False
         else:
             if (byte >> 6) != 0b10:  # checks if it is a continuation byte 10
