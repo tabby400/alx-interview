@@ -19,7 +19,7 @@ def validUTF8(data):
                 track_bytes = 1
             elif (byte >> 4) == 0b1110:  # a 3 byte char
                 track_bytes = 2
-            elif (byte >> 3) == 0b11110):  # 4 byte char
+            elif (byte >> 3) == 0b11110:  # 4 byte char
                 track_bytes = 3
             else:
                 return False
