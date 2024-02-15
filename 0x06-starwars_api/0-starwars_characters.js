@@ -6,7 +6,6 @@ const movieID = process.argv[2]; // getting movie id passed as arg
 
 // async function to get the characters
 async function starwarsCharacters (movieId) {
- try {
   const endpoint = 'https://swapi-api.hbtn.io/api/films/' + movieId;
   let response = await (await request(endpoint)).body; // making http req and waiting
   response = JSON.parse(response); // parsing json response
@@ -19,8 +18,6 @@ async function starwarsCharacters (movieId) {
     character = JSON.parse(character);
     console.log(character.name); // displaying char name
   }
-} catch (error) {
-  console.error('Error fetching Star Wars characters:', error);
-  }
+
 }
 starwarsCharacters(movieID); // function is called with te movie ID
