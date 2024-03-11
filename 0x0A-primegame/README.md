@@ -1,0 +1,2 @@
+#### Prime Game
+Involves a game where Maria and Ben, take turns choosing prime numbers from a consecutive set of integers starting from 1 up to a specified maximum number. Each player removes the chosen prime number and its multiples from the set. The player who cannot make a move loses the game. The program needs to determine, based on the provided input, who wins each round of the game and ultimately who wins the most rounds overall.
